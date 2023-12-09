@@ -3,19 +3,19 @@
 document.querySelector("#grandparent")
 .addEventListener('click', () => {
     console.log("Grandparent  clicked")
-},false)
+},true)  // trikkling
 
 document.querySelector("#parent")
 .addEventListener('click', () => {
     console.log("parent  clicked")
-},false)
+},false) // bubbling
 
 document.querySelector("#child")
 .addEventListener('click', (e) => {
     console.log("child  clicked")
     // e.stopPropagation()
     // e.stopImmediatePropagation()
-}, false)
+}, true) // trikkling
 
 
 /**
