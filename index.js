@@ -1,21 +1,32 @@
-let counter = 0;
-
-const getData = () =>{
-    // calls an API and gets Data
-    console.log('fetching data..', counter++)
-}
-
-const doSomeMagic = function(fn, delay) {
-    let timer
-    return function() {
-        let context = this;
-        args = arguments;
-        clearTimeout(timer)
-        timer =  setTimeout(() => {
-            fn.apply(context,arguments)
-        }, delay)
+const loggerFunc = () => {
+    console.count("Throttled Function");
+  }
+  
+  const throttle = (fn, limit) => {
+    let flag = true;
+    return function(){
+      let context = this;
+      let args = arguments;
+      if(flag){
+        fn.apply(context, args);
+        flag = false;
+        setTimeout(() => {
+          flag=true;
+        }, limit);
+      }
     }
-}
-
-const betterFunction = doSomeMagic(getData, 300)
-
+  }
+  
+  const betterLoggerFunction = throttle(loggerFunc, 1000);
+  
+  window.addEventListener("resize",betterLoggerFunction);
+  
+  // This is the normal Function without Throttling
+  //Check the console for the difference between the calls of Normal Function and the Throttled Function 
+  const normalFunc = () => {
+    console.count("Normal Function");
+  }
+  
+  window.addEventListener("resize",normalFunc);
+  
+  
