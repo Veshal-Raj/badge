@@ -1,17 +1,21 @@
+// const e = require("express")
+
 document.querySelector("#grandparent")
 .addEventListener('click', () => {
     console.log("Grandparent  clicked")
-},true)
+},false)
 
 document.querySelector("#parent")
 .addEventListener('click', () => {
     console.log("parent  clicked")
-},true)
+},false)
 
 document.querySelector("#child")
-.addEventListener('click', () => {
+.addEventListener('click', (e) => {
     console.log("child  clicked")
-}, true)
+    // e.stopPropagation()
+    // e.stopImmediatePropagation()
+}, false)
 
 
 /**
