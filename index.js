@@ -1,23 +1,20 @@
-document.querySelector("#textAll").addEventListener('keyup', (e) => {
-    console.log(e)
-    if (e.target.dataset.uppercase != undefined){
-        e.target.value = e.target.value.toUpperCase()
-    }
-})
+let counter = 0;
 
-/**
- * 
- *    Benefits
- *    --------
- *      1) Saves alot of memory(we need to attach only one single event handler)
- *      2) Writing less code
- *      3) Dom Manupilation
- *    
- *    Limitations
- *    -----------
- *      1) All the events are not bubbled up.
- *      2) Some events don't bubble up the heirachy,
- *         so we need to handle that. 
- * 
- * 
- */
+const getData = () =>{
+    // calls an API and gets Data
+    console.log('fetching data..', counter++)
+}
+
+const doSomeMagic = function(fn, delay) {
+    let timer
+    return function() {
+        let context = this;
+        args = arguments;
+        clearTimeout(timer)
+        timer =  setTimeout(() => {
+            getData.apply(context)
+        }, delay)
+    }
+}
+
+const betterFunction = doSomeMagic(getData, 300)
