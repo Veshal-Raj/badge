@@ -1,25 +1,12 @@
 // const e = require("express")
 
-document.querySelector("#grandparent")
-.addEventListener('click', () => {
-    console.log("Grandparent  clicked")
-},true)  // trikkling
-
-document.querySelector("#parent")
+document.querySelector("#category")
 .addEventListener('click', (e) => {
-    console.log("parent  clicked")
-    // e.stopPropagation()
-},true) // bubbling
-
-document.querySelector("#child")
-.addEventListener('click', (e) => {
-    console.log("child  clicked")
-    e.stopPropagation()
-    // e.stopImmediatePropagation()
-}, true) // trikkling
+    console.log(e.target.id);
+    if (e.target.tagName == 'LI') {
+        window.location.href = '/' + e.target.id;
+    }
+})  
 
 
-/**
- *  stop propagation method helps us to stop proprating 
- *  from the propagating cycle
- */
+
