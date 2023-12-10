@@ -1,0 +1,37 @@
+
+
+# Normal Script tag case
+----------------------
+here html parsing continues and stops when it reaches to the script tag,
+when it reaches to the script tag it starts to load the script from the network,
+and after loading complete, it starts to execute. After the execution completes, html parsing continues.
+    
+|---html parsing---|                                                                       |-----html parsing continues------|
+                    <---script fetch from the network---><|---script starts to execute---|>
+
+
+# Using Async attribute in the Script tag
+---------------------------------------
+here html parsing continues and along with that the script starts to fetch from the network,
+and when it reaches to the script tag, script starts to execute, and after the execution completes,
+html parsing continues.
+
+|-------------html parsing--------------|                                 |-----html parsing continues------|
+    <---script fetch from the network---><|---script starts to execute---|>
+
+
+# Using Defer attribute in the Script tag
+---------------------------------------
+here the the html parsing continues and stops only if the parsing complets, 
+and the script starts to load from the network asynchrously, and the script starts to execute only after the html parsing completes.
+|----------------------------html parsing continues-------------------------|
+    <---script fetch from the network--->                                   <|---script starts to execute---|>
+
+
+
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+If we are using Async attribute, it will not gurantee you the order of execution. In some cases, one script is depended on another script,
+in such cases using async attribute may broke your application. Using defer attribute is better comparing to async attribute, because,
+it will not break your order of execution. but in some cases using a third party script, for example google analytics script or something,
+using async attribute is fine.
