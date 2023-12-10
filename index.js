@@ -14,6 +14,12 @@ let multiply = function(x,y) {
  * 
  */
 
+let multiply1 = multiply.bind(this)
+multiply1(5,2)
+
+// output is 10
+
+
 let multiply2 = multiply.bind(this,2,3)
 multiply2(5)
 
@@ -24,7 +30,7 @@ multiply2(5)
  */
 
 let multiply3 = multiply.bind(this,2,3,3,4,56,4)
-multiply2(5)
+multiply3(5)
 
 /**
  *      output is 6, because the x will taken as 2 and 
