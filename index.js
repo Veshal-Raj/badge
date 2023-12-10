@@ -1,24 +1,33 @@
-// let multiply = function(x,y) {
-//   console.log(x*y)
+// function Addition(a,b,c) {
+//   return a+b+c
 // }
 
 
 
-let multiply = function (x) {
-  return function(y) {
-    console.log(x*y)
+function Addition(a) {
+  return function(b) {
+    return function(c) {
+      return a+b+c;
+    }
   }
 }
 
+// let res = Addition(1,2,3)
+// console.log(res)
+// console.log(Addition(2,3,4))
 
-let multiply1 = multiply(2)
-multiply1(3)
+// console.log(a(5,6,7))
+
+// let a = Addition(1)
+// console.log(a)
+// let b = a(2)
+// console.log(b)
+// let c = b(3)
+// console.log(c)
 
 
-let multiply2 = multiply(2)
-multiply2(3)
 
+// instead of this
 
-/**
- *    This is using closure.
- */
+let a = Addition(1)(2)(3)
+console.log(a)
