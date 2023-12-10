@@ -4,13 +4,13 @@
 
 
 
-function Addition(a) {
-  return function(b) {
-    return function(c) {
-      return a+b+c;
-    }
-  }
-}
+// function Addition(a) {
+//   return function(b) {
+//     return function(c) {
+//       return a+b+c;
+//     }
+//   }
+// }
 
 // let res = Addition(1,2,3)
 // console.log(res)
@@ -29,5 +29,25 @@ function Addition(a) {
 
 // instead of this
 
-let a = Addition(1)(2)(3)
-console.log(a)
+// let a = Addition(1)(2)(3)
+// console.log(a)
+
+
+
+// Real usecase
+
+let object = {
+  name: 'Veshal',
+  age: 22
+}
+
+
+function userInfo(obj) {
+  return function(userinfo){
+    return obj[userinfo]
+  }
+}
+
+let res = userInfo(object)
+console.log(res('name'))
+console.log(res('age'))
