@@ -1,25 +1,44 @@
 /**
  * 
- *      Q) sum(1)(2)(3).....(n)(), find a best solution for this.
- *      Amazon interview question  
+ *     Expected Outupt: 
+ *          {
+                "user_name": "Akshay Saini",
+                "user_address_personal_city": "Dehradun",
+                "user_address_personal_state": "Uttrakhand",
+                "user_address_personal_area": "Majra",
+                "user_address_office_city": "Hyderabad",
+                "user_address_office_area_landmark": "Hi Tech"
+            }
  */
 
-// let sum = function(a) {
-//     return function(b) {
-//         if (b) {
-//             return sum(a+b)
-//         }
-//         return a;
-//     }
-// }
+let user ={
+    name: "Akshay Saini",
+    address: {
+      personal: {
+        city: "Dehradun",
+        state: "Uttrakhand",
+        area: "Majra",
+      },
+      office: {
+        city: "Hyderabad",
+        area: {
+          landmark: "Hi Tech",
+        }
+      }
+    }
+  }
 
-// let sum =(a) => {
-//     return (b)=> {
-//     return b?sum(a+b):a
-//     }
-// }
-
-let sum = (a) => (b) => b?sum(a+b) :a
-
-let result = sum(1)(2)(3)(4)(5)(6)(7)(8)(9)(10)()
-console.log(result)
+  
+  let magic = function(obj, parent,finalObj){
+      for(let key in obj) {
+          if (typeof obj[key] ==='object') {
+              magic(obj[key], parent + '_'+key, finalObj)
+            }else{
+                finalObj[parent+'_'+key]=obj[key]
+            }
+        }
+    }
+    
+    let finalObj = {}
+magic(user, 'user', finalObj)
+console.log(finalObj)
