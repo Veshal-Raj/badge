@@ -1,18 +1,15 @@
 const name = {
   firstName: 'Veshal',
   lastName: 'Raj',
-  fullName: function() {
-    console.log(this.firstName+ ' '+ this.lastName)
-  }
 }
-
-name.fullName()
-
 const anotherName = {
   firstName: 'Sachin',
   lastName: 'Tendulkar'
 }
 
-// function borrowing
+let fullName = function() {
+  console.log(this.firstName+ ' '+ this.lastName)
+}
 
-name.fullName.call(anotherName)
+fullName.call(name)
+fullName.call(anotherName)
