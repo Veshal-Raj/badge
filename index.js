@@ -13,3 +13,4 @@ let fullName = function(hometown, state) {
 
 fullName.call(name,'Pattambi', 'Kerala')
 fullName.apply(anotherName, ['Mumbai', 'Maharastra'])
+// in Apply method we need to put the arguments in an array.
