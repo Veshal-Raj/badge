@@ -14,6 +14,8 @@ let fullName = function(hometown, state) {
 fullName.call(name,'Pattambi', 'Kerala')
 fullName.apply(anotherName, ['Mumbai', 'Maharastra'])
 
+
+// Bind method returns a function. we can call this function whenver we want.
 let printFullName = fullName.bind(name, 'Pattambi', 'kerala')
 console.log(printFullName)
 printFullName()
