@@ -1,21 +1,23 @@
-const name = {
+let name = {
   firstName: 'Veshal',
-  lastName: 'Raj',
-}
-const anotherName = {
-  firstName: 'Sachin',
-  lastName: 'Tendulkar'
+  lastName: 'Raj'
 }
 
-let fullName = function(hometown, state) {
-  console.log(this.firstName+ ' '+ this.lastName + " from "+ hometown +', '+state)
+let printName = function (hometown, state, country) {
+  console.log(this.firstName+ " "+ this.lastName+", "+hometown+", "+state+', '+country)
 }
 
-fullName.call(name,'Pattambi', 'Kerala')
-fullName.apply(anotherName, ['Mumbai', 'Maharastra'])
+let printMyName = printName.bind(name, "Pattambi", "kerala");
+printMyName("India")
 
 
-// Bind method returns a function. we can call this function whenver we want.
-let printFullName = fullName.bind(name, 'Pattambi', 'kerala')
-console.log(printFullName)
-printFullName()
+Function.prototype.mybind = function(...args){
+  let obj = this,
+  params = args.slice(1);
+  return function (...args2) {
+    obj.apply(args[0],[...params, ...args2]);
+  }
+}
+
+let printMyName2 = printMyName.mybind(name, "WhiteField", "Banglore");
+printMyName2("India")
