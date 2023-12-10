@@ -7,9 +7,9 @@ const anotherName = {
   lastName: 'Tendulkar'
 }
 
-let fullName = function() {
-  console.log(this.firstName+ ' '+ this.lastName)
+let fullName = function(hometown) {
+  console.log(this.firstName+ ' '+ this.lastName + " from "+ hometown)
 }
 
-fullName.call(name)
-fullName.call(anotherName)
+fullName.call(name,'Pattambi')
+fullName.call(anotherName, 'Mumbai')
