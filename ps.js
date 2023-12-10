@@ -1,21 +1,17 @@
-let names = [
-  "Alice",
-  "Bob",
-  "Charlie",
-  "David",
-  "Eva",
-  "Frank",
-  "Grace",
-  "Henry",
-  "Ivy",
-  "Jack",
-];
+/**
+ * 
+ *      Q) sum(1)(2)(3).....(n)(), find a best solution for this.
+ *      Amazon interview question  
+ */
 
-function Givecandidate() {
-    let n = names.length;
-    if (n<1) return alert('No Candidate Left!!!')
-  let randomNumber = Math.floor(Math.random() * n);
-  console.log(names[randomNumber]);
-  names.splice(randomNumber,1)
-  n = names.length
+let sum = function(a) {
+    return function(b) {
+        if (b) {
+            return sum(a+b)
+        }
+        return a;
+    }
 }
+
+let result = sum(1)(2)(3)(4)(5)(6)(7)(8)(9)(10)()
+console.log(result)
