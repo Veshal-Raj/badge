@@ -12,4 +12,4 @@ let fullName = function(hometown, state) {
 }
 
 fullName.call(name,'Pattambi', 'Kerala')
-fullName.call(anotherName, 'Mumbai', 'Maharastra')
+fullName.apply(anotherName, ['Mumbai', 'Maharastra'])
