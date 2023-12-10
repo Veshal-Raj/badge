@@ -13,12 +13,13 @@
 //     }
 // }
 
-let sum =(a) => {
-    return (b)=> {
-    return b?sum(a+b):a
-    }
-}
+// let sum =(a) => {
+//     return (b)=> {
+//     return b?sum(a+b):a
+//     }
+// }
 
+let sum = (a) => (b) => b?sum(a+b) :a
 
 let result = sum(1)(2)(3)(4)(5)(6)(7)(8)(9)(10)()
 console.log(result)
