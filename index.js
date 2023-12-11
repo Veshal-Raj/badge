@@ -1,53 +1,15 @@
-// function Addition(a,b,c) {
-//   return a+b+c
-// }
-
-
-
-// function Addition(a) {
-//   return function(b) {
-//     return function(c) {
-//       return a+b+c;
-//     }
-//   }
-// }
-
-// let res = Addition(1,2,3)
-// console.log(res)
-// console.log(Addition(2,3,4))
-
-// console.log(a(5,6,7))
-
-// let a = Addition(1)
-// console.log(a)
-// let b = a(2)
-// console.log(b)
-// let c = b(3)
-// console.log(c)
-
-
-
-// instead of this
-
-// let a = Addition(1)(2)(3)
-// console.log(a)
-
-
-
-// Real usecase
-
-let object = {
+let obj1 = {
   name: 'Veshal',
-  age: 22
-}
-
-
-function userInfo(obj) {
-  return function(userinfo){
-    return obj[userinfo]
+  city: 'Pattambi',
+  getIntro: function () {
+    console.log('my name is '+this.name+', '+'I am from '+this.city)
   }
 }
 
-let res = userInfo(object)
-console.log(res('name'))
-console.log(res('age'))
+let obj2 = {
+  name: 'Vishal'
+}
+
+
+// Never do this in real world, because this creates a lot of performance issue.
+obj2.__proto__ = obj1
