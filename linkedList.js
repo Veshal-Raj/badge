@@ -1,90 +1,148 @@
 class node {
     constructor(data) {
         this.data = data;
-        this.next = null;        
-    }   
+        this.next = null;
+    }
 }
 
-class LinkedList {
+class Linkedlist{
     constructor(){
-        this.head = null;
+        this.head = null
         this.size = 0;
     }
 
-    append(data) {
-        let newNode = new node(data);
-        if (!this.head) {
+    append(data){
+        let newNode = new node(data)
+        if (!this.head){
             this.head = newNode;
         } else {
             let current = this.head;
-            while(current.next) {
-                current = current.next;
+            while(current.next){
+                 current = current.next;
             }
             current.next = newNode;
         }
         this.size++
     }
 
-    insertAtBeginning(data) {
-        let newNode = new node(data);
-        newNode.next = this.head;
-        this.head = newNode;
+    prepand(data){
+        let newNode = new node(data)
+        if (!this.head){
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            newNode.next = current;
+            this.head = newNode;
+            // while(current.next)
+        }
         this.size++
     }
+    
 
-    insertAtEnd(data) {
+    insertAtBeginning(data){
+        this.prepand(data)
+    }
+    
+    insertAtEnd(data){
         this.append(data)
     }
 
-   insertAtPosition(data, position){
-    if (position< 0 || position>this.size++){
-        console.log('Invalid positon')
-        return;
-    }
-    if (position === 0){
-        this.insertAtBeginning(data)
-    } else {
-        let newNode = new node(data);
-        let current = this.head;
-        let count =0;
-        while(count < position-1){
-            current = current.next;
-            count++
+    insertAtPosition(data, position) {
+        if (position <0 || position>this.size){
+            console.log('Invalid position')
+            return 
         }
-        newNode.next = current.next;
-        current.next = newNode;
+
+        if (position === 0){
+            this.prepand(data)
+        }else {
+            let newNode = new node(data)
+            let current = this.head;
+            let count = 0;
+             while( count < position -1){
+                let current = current.next;
+                count++
+             }
+             newNode.next = current.next;
+             current.next = newNode;
+        }
+        this.size++
+
     }
-    this.size++
-   }
 
+    deleteFromBegin(){
+        if (!this.head){
+            console.log('nothing to delete')
+            return;
+        } else{
+             this.head = this.head.next;
+             this.size--
+        } 
+    }
 
+    deleteFromEnd(){
+        if (!this.head){
+            console.log('nothing to delete')
+            return
+        }else{
+            let current = this.head;
+            while(current.next.next){
+                current = current.next
+            }
+            current.next = null
+        }
+        this.size--
+    }
 
+    deleteFromPosition(position){
+        if(!this.head){
+            console.log('nothing to delete')
+            return;
+        } else{
+            let current = this.head;
+            let count = 0;
+            while(count < position -1){
+                current = current.next;
+                count++
+            }
+            current.next = current.next.next
+        }
+        this.size--
+    }
 
-    display() {
-        let current = this.head;
-        while(current) {
-            console.log(current.data);
-            current = current.next;
+    traverse(){
+        if (!this.head){
+            console.log('nothing to show')
+            return
+        }else{
+            let current = this.head;
+            while(current){
+                console.log(current.data)
+                current = current.next
+            }
         }
     }
+
 }
 
-let linkedlist = new LinkedList()
+let linkedlist = new Linkedlist()
 
-linkedlist.append(9)
-linkedlist.append(8)
-linkedlist.append(7)
-linkedlist.append(6)
-linkedlist.append(5)
-linkedlist.append(4)
-linkedlist.append(3)
-linkedlist.append(2)
 linkedlist.append(1)
-linkedlist.append(0)
-linkedlist.insertAtBeginning(12234)
-console.log('size --> ',linkedlist.size)
+linkedlist.append(1)
+linkedlist.append(1)
+linkedlist.prepand(2)
+linkedlist.prepand(0)
+linkedlist.insertAtBeginning(99)
+linkedlist.insertAtEnd(45)
 
-linkedlist.insertAtEnd(99999)
-linkedlist.insertAtPosition(7777777777777777, 10)
+linkedlist.traverse()
+linkedlist.deleteFromBegin()
+console.log('size --> ', linkedlist.size)
 
-linkedlist.display()
+linkedlist.traverse()
+linkedlist.deleteFromEnd()
+console.log('size --> ', linkedlist.size)
+linkedlist.deleteFromPosition()
+console.log('size --> ', linkedlist.size)
+
+linkedlist.traverse()
