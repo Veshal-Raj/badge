@@ -8,6 +8,7 @@ class node {
 class LinkedList {
     constructor(){
         this.head = null;
+        this.size = 0;
     }
 
     append(data) {
@@ -21,6 +22,7 @@ class LinkedList {
             }
             current.next = newNode;
         }
+        this.size++
     }
 
     display() {
@@ -44,5 +46,6 @@ linkedlist.append(3)
 linkedlist.append(2)
 linkedlist.append(1)
 linkedlist.append(0)
+console.log('size --> ',linkedlist.size)
 
 linkedlist.display()
