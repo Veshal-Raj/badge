@@ -123,6 +123,20 @@ class Linkedlist{
         }
     }
 
+   search(value) {
+    if(!this.head){
+        console.log('nothing to search')
+        return;
+    } else{
+        let current = this.head;
+        while(current){
+            if (current.data === value) return true
+            current = current.next
+        }
+    }
+    return false
+   }
+
 }
 
 let linkedlist = new Linkedlist()
@@ -146,3 +160,5 @@ linkedlist.deleteFromPosition()
 console.log('size --> ', linkedlist.size)
 
 linkedlist.traverse()
+
+console.log('search result ',linkedlist.search(1))
