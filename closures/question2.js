@@ -3,6 +3,8 @@
 
 function createBase(num){
     return function(innerNum){
+        console.log("num",num)
+        console.log("innerNum", innerNum)
         console.log(innerNum+num)
     }
 }
@@ -10,4 +12,5 @@ function createBase(num){
 var addSix = createBase(6);
 addSix(10) // returns 16
 addSix(21); // returns 27
+addSix(100) // returns 106
 
