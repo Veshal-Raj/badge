@@ -123,6 +123,24 @@ class Linkedlist{
         }
     }
 
+    reverse() {
+        if (!this.head){
+            console.log("nothing to show");
+            return 
+        } else {
+            let prev = null;
+            let current = this.head;
+            let next = null;
+            while(current){
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            this.head = prev
+        }
+    }
+
    search(value) {
     if(!this.head){
         console.log('nothing to search')
