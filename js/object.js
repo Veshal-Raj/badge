@@ -195,6 +195,7 @@
         console.log(data) // {"level":19,"health":90}
  * 
  */
+       
 
 //--------------------------------------------------------------------//
 
@@ -214,6 +215,7 @@
         console.log(shape.perimeter()) // NaN
  * 
  */
+
 
 //------------------------------------------------------------------------//
 // what is the output
@@ -258,6 +260,7 @@
         console.log(d.greetings) // hello
  * 
  */
+       
 
 //------------------------------------------------------------------------//
 
@@ -275,9 +278,10 @@
     const members = [person]
     person = null
 
-    console.log(members)
+    console.log(members) // [{name: 'hi'}]
  * 
  */
+    ``
 
 //-----------------------------------------------------------------------//
 
@@ -329,11 +333,199 @@ console.log(person2) // { name: 'John', age: 50 }
 // What is shallow copy and what is deep copy of an object? 
 // how to deep copy / clone an object?
 
-let user = {
-    name: 'Roadside coder',
-    age: 24
-}
+/**
+ *      let user = {
+            name: 'Roadside coder',
+            age: 24,
+            fn: function() {
+                return 'hello'
+            }
+        }
 
-// const objClone = Object.assign({}, user)
-// const objClone = JSON.parse(JSON.stringify(user))
-const objClone = {...user}
+        const objClone = Object.assign({}, user)
+        // const objClone = JSON.parse(JSON.stringify(user))
+        // const objClone = {...user}
+        console.log(user.fn())
+        console.log(objClone.fn())
+ * 
+ */
+
+//----------------------------------------------------------------------------//
+
+/**
+ *      const person = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30,
+            address: {
+            street: '123 Main St',
+            city: 'Anytown',
+            country: 'USA'
+            },
+            hobbies: ['reading', 'traveling', 'photography']
+        };
+        
+        // Write a function to update the person's age to 35 and add a new hobby 'cooking'.
+        function updatePersonInfo(person) {
+            // Your code here
+            person.age = 35;
+            person.hobbies.push('writing')
+        }
+        
+        updatePersonInfo(person);
+        console.log(person);
+ * 
+ */
+
+//---------------------------------------------------------------------------------------//
+
+/**
+ *      const student = {
+            name: 'Alice',
+            age: 20,
+            grades: {
+            math: 90,
+            science: 85,
+            history: 95
+            },
+            sports: ['basketball', 'soccer', 'tennis']
+        };
+        
+        // Write a function to calculate the average grade of the student.
+        function calculateAverageGrade(student) {
+            // Your code here
+            let total = 0;
+            let count = 0;
+            let grades = student.grades
+
+            // object.keys will give you the keys in an array, so you can do array operations in it, like .length
+            if (Object.keys(grades).length === 0) {
+                return 0;
+            }
+
+            for (let key in grades) {
+                total += grades[key]
+                count ++
+            }
+            return total/count
+
+        }
+        
+        const averageGrade = calculateAverageGrade(student);
+        console.log(`Average grade: ${averageGrade}`);
+ * 
+ */
+  
+//--------------------------------------------------------------------//
+
+/**
+ *      const employees = [
+            { id: 1, name: 'Alice', department: 'HR', salary: 50000 },
+            { id: 2, name: 'Bob', department: 'Engineering', salary: 60000 },
+            { id: 3, name: 'Charlie', department: 'Marketing', salary: 55000 },
+            { id: 4, name: 'David', department: 'Engineering', salary: 70000 },
+            { id: 5, name: 'Eve', department: 'HR', salary: 52000 }
+        ];
+        
+        // Write a function to calculate the total salary of all employees in a given department.
+        function calculateTotalSalary(employees, department) {
+            // Your code here
+            let totalSalary = 0;
+            for (let i=0; i<employees.length; i++) {
+                let depart = employees[i].department
+                if (depart === department) {
+                    totalSalary += employees[i].salary
+                }
+            }
+            return totalSalary
+        }
+        
+        const hrTotalSalary = calculateTotalSalary(employees, 'HR');
+        console.log(`Total salary of HR department: ${hrTotalSalary}`);
+ * 
+ */
+  
+//-----------------------------------------------------------------------------//
+
+/**
+ * 
+ *      const employees = [
+            { id: 1, name: 'Alice', department: 'HR', salary: 50000 },
+            { id: 2, name: 'Bob', department: 'Engineering', salary: 60000 },
+            { id: 3, name: 'Charlie', department: 'Marketing', salary: 55000 },
+            { id: 4, name: 'David', department: 'Engineering', salary: 70000 },
+            { id: 5, name: 'Eve', department: 'HR', salary: 52000 }
+        ];
+        
+        // Write a function to calculate the total salary of all employees in a all department.
+        function calculateTotalSalary(employees) {
+            // Your code here
+            let totalSalaryBasedOnDepartment = new Map()
+            for (let i=0; i<employees.length; i++) {
+                if (totalSalaryBasedOnDepartment.has(employees[i].department)) {
+                    let value = totalSalaryBasedOnDepartment.get(employees[i].department)
+                    let newValue = value + employees[i].salary
+                    totalSalaryBasedOnDepartment.set(employees[i].department, newValue)
+                } else {
+                    totalSalaryBasedOnDepartment.set(employees[i].department, employees[i].salary)
+                }
+            }
+            console.log(totalSalaryBasedOnDepartment)
+        }
+        
+        const hrTotalSalary = calculateTotalSalary(employees);
+        console.log(`Total salary of all department: ${hrTotalSalary}`);
+ * 
+ */
+
+//----------------------------------------------------------------------------------//
+
+/**
+ *  const inventory = {
+            items: [
+            { id: 1, name: 'Apple', quantity: 10 },
+            { id: 2, name: 'Banana', quantity: 20 },
+            { id: 3, name: 'Orange', quantity: 15 }
+            ],
+            // Write a function to add a new item to the inventory.
+            addItem: function(id, name, quantity) {
+            // Your code here
+            this.items.push({id: id, name: name, quantity: quantity})
+            return this.items
+            },
+            // Write a function to remove an item from the inventory by its id.
+            removeItemById: function(id) {
+            // Your code here
+            for (let i=0; i<this.items.length; i++) {
+                if (this.items[i].id === id) {
+                    this.items.splice(i,1)
+                    break;
+                }
+            }
+            },
+            // Write a function to update the quantity of an item in the inventory by its id.
+            updateItemQuantityById: function(id, newQuantity) {
+            // Your code here
+            for (let i=0; i<this.items.length; i++) {
+                if (this.items[i].id === id) {
+                    this.items[i].quantity = newQuantity
+                    break;
+                }
+            }
+            }
+        };
+        
+        // Add a new item to the inventory
+        inventory.addItem(4, 'Grapes', 25);
+        console.log(inventory.items);
+        
+        // Remove an item from the inventory by its id
+        inventory.removeItemById(2);
+        console.log(inventory.items);
+        
+        // Update the quantity of an item in the inventory by its id
+        inventory.updateItemQuantityById(1, 15);
+        console.log(inventory.items);
+ * 
+ */
+  
