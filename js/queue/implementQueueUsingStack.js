@@ -4,8 +4,6 @@ var MyQueue = function() {
 
 }
 
-
-
 MyQueue.prototype.enqueue = function(x) {
    
     this.s1.push(x)
