@@ -1,14 +1,14 @@
 // How would you use a closure for creating a private counter?
 
 function counter() {
-    var _counter = 0;
+    var counter = 0;
 
     function add(increment){
-        _counter += increment;
+        counter += increment;
     }
 
     function retrieve(){
-        return "Counter = "+ _counter;
+        return "Counter = "+ counter;
     }
 
     return {
