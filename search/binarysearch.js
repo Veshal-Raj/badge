@@ -1,6 +1,6 @@
 const binarySearch = (nums, k) => {
   let start = 0;
-  let end = nums.length - 1;
+  let end = nums.length ;
   while (start < end) {
     let middle = Math.floor((end + start) / 2);
     if (nums[middle] === k) return middle;
@@ -14,4 +14,4 @@ const binarySearch = (nums, k) => {
 };
 
 
-console.log(binarySearch([1,1,2,3,4,5], 1))
+console.log(binarySearch([1,1,2,3,4,5], 5))
