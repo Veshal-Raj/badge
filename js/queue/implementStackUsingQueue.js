@@ -1,31 +1,33 @@
-var MyStack = function() {
-    this.q1 = []
-    this.q2 = []
-}
-
-MyStack.prototype.push = function(x) {
-    while(this.q1.length !==0) {
-        this.q2.push(this.q1.shift())
+class MyStack {
+    constructor() {
+        this.q1 = []
+        this.q2 = []
     }
-    this.q1.push(x)
-    while(this.q2.length !==0) {
-        this.q1.push(this.q2.shift())
+    push(x) {
+        while (this.q1.length !== 0) {
+            this.q2.push(this.q1.shift())
+        }
+        this.q1.push(x)
+        while (this.q2.length !== 0) {
+            this.q1.push(this.q2.shift())
+        }
+    }
+    pop() {
+        return this.q1.shift()
+    }
+    peek() {
+        return this.q1[0]
+    }
+    isEmpty() {
+        return this.q1.length === 0
+    }
+    size() {
+        return this.q1.length
     }
 }
 
 
-MyStack.prototype.pop = function() {
-   return this.q1.shift()
-}
 
-MyStack.prototype.peek = function () {
-    return this.q1[0]
-}
 
-MyStack.prototype.isEmpty = function() {
-    return this.q1.length === 0
-}
 
-MyStack.prototype.size = function() {
-    return this.q1.length
-}
+
