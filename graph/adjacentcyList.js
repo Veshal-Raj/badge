@@ -52,6 +52,48 @@ class Graph1 {
         delete this.adjacencyList[vertex]
     }
 
+    // DFS
+    dfs(start) {
+        let stack = [start];
+        let result = [];
+        let visited = {};
+        let currrentVal; 
+        visited[start] = true
+        while(stack.length) {
+            currrentVal = stack.pop();
+            result.push(currrentVal);
+            
+            this.adjacencyList[currrentVal].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            })
+        }
+        return result;
+    }
+
+    // BFS
+    bfs(start) {
+        let queue = [start];
+        let result = [];
+        let visited = {};
+        let currrentVal; 
+        visited[start] = true
+        while(queue.length) {
+            currrentVal = queue.shift();
+            result.push(currrentVal);
+
+            this.adjacencyList[currrentVal].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            })
+        }
+        return result
+    }
+
     display() {
         for (let key in this.adjacencyList) {
             console.log(key + ' --->> ' + [...this.adjacencyList[key]])
@@ -60,13 +102,16 @@ class Graph1 {
 }
 
 
-let gp = new Graph1()
+let graph = new Graph1()
 
-gp.addEdge('A', 'B')
-gp.addEdge('B', 'C')
 
-gp.display()
-console.log('-----------------------')
-// gp.removeEdge('A', 'B')
-gp.removeVertex('B')
-gp.display()
+graph.addEdge('A', 'B');
+graph.addEdge('A', 'C');
+graph.addEdge('B', 'D');
+graph.addEdge('C', 'E');
+graph.addEdge('D', 'E');
+graph.addEdge('D', 'F');
+graph.addEdge('E', 'F');
+
+console.log('bfs -- ',graph.bfs('A'))
+console.log('dfs -- ',graph.dfs('A'))
