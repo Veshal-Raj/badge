@@ -1,4 +1,4 @@
-class Graph1 {
+class Graph {
     constructor() {
         this.adjacencyList = {}
     }
@@ -102,16 +102,17 @@ class Graph1 {
 }
 
 
-let graph = new Graph1()
+let g = new Graph()
+g.bfs()
 
 
-graph.addEdge('A', 'B');
-graph.addEdge('A', 'C');
-graph.addEdge('B', 'D');
-graph.addEdge('C', 'E');
-graph.addEdge('D', 'E');
-graph.addEdge('D', 'F');
-graph.addEdge('E', 'F');
+// graph.addEdge('A', 'B');
+// graph.addEdge('A', 'C');
+// graph.addEdge('B', 'D');
+// graph.addEdge('C', 'E');
+// graph.addEdge('D', 'E');
+// graph.addEdge('D', 'F');
+// graph.addEdge('E', 'F');
 
-console.log('bfs -- ',graph.bfs('A'))
-console.log('dfs -- ',graph.dfs('A'))
+// console.log('bfs -- ',graph.bfs('A'))
+// console.log('dfs -- ',graph.dfs('A'))

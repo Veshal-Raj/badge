@@ -23,3 +23,5 @@ class Graph {
     }
 }
 
+const g= new Graph()
+g. 
