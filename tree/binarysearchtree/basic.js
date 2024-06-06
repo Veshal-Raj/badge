@@ -95,6 +95,16 @@ class BinarySearchTree {
         }
     }
 
+    height(root = this.root) {
+        if (root === null) {
+            return -1
+        } else {
+            let leftHeight = this.height(root.left)
+            let rightHeight = this.height(root.right)
+            return Math.max(leftHeight, rightHeight) + 1;
+        }
+    }
+
 }
 
 const bst = new BinarySearchTree();
